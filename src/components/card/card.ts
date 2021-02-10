@@ -22,7 +22,7 @@ export function createCard({ imgSrc, name, status, species, origin }) {
       }),
       createElement("p", {
         className: "card__origin",
-        innerText: origin,
+        innerText: origin.name,
       }),
     ],
   });
