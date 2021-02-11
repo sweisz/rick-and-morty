@@ -27,6 +27,7 @@ export const Morty = () =>
   });
 
 // show multiple cards
+//
 export const Multiple = () => {
   const characters: Character[] = [
     {
@@ -85,6 +86,7 @@ CharactersFromAPI.loaders = [
 ];
 
 //  show a random card
+//
 export const randomCahracter = () => {
   const randomButton = createElement("button", {
     innerText: "Load random character",
@@ -116,6 +118,7 @@ export const randomCahracter = () => {
 };
 
 // Show & Filter characters
+//
 export const CharactersFromAPIWithFilter = (
   args,
   { loaded: { characters } }
