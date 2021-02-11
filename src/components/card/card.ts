@@ -19,12 +19,18 @@ import { createElement } from "../../utils/createElement";
  */
 
 export function createCard({ imgSrc, name, status, species, origin }) {
+  // Aufteilen von Front- & Backside in Variablen
+  const cardFront = "Content from card front";
+  const cardBack = "Content from card back";
+
   return createElement("div", {
     className: "card",
     childs: [
+      // Card Inner
       createElement("div", {
         className: "card__inner",
         childs: [
+          // Card Front
           createElement("div", {
             className: "card__front",
             childs: [
@@ -50,6 +56,7 @@ export function createCard({ imgSrc, name, status, species, origin }) {
               }),
             ],
           }),
+          // Card Back
           createElement("div", {
             className: "card__back",
             childs: [
