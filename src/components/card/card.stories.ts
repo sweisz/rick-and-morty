@@ -1,7 +1,7 @@
 import "./card.css";
 import { createCard } from "./card";
 import { createElement } from "../../utils/createElement";
-import { getCharacter, getCharacters } from "../../utils/api";
+import { Character, getCharacter, getCharacters } from "../../utils/api";
 
 export default {
   title: "Components/Card",
@@ -26,8 +26,10 @@ export const Morty = () =>
     origin: { name: "Earth (C-137)" },
   });
 
+// show multiple cards
+//
 export const Multiple = () => {
-  const characters = [
+  const characters: Character[] = [
     {
       imgSrc: "https://rickandmortyapi.com/api/character/avatar/2.jpeg",
       name: "Morty Smith",
@@ -83,6 +85,40 @@ CharactersFromAPI.loaders = [
   }),
 ];
 
+//  show a random card
+//
+export const randomCahracter = () => {
+  const randomButton = createElement("button", {
+    innerText: "Load random character",
+    onclick: async () => {
+      // generate random character id
+      const randomCharacterId = Math.floor(Math.random() * 670) + 1;
+      console.log({ randomCharacterId });
+      // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random#getting_a_random_number_between_two_values
+      // getCharacter from API
+      const randomCharacter = await getCharacter(randomCharacterId);
+      console.log({ randomCharacter });
+      // create Card
+      const randomCharacterCard = createCard(randomCharacter);
+      // make to only display on character
+      if (container.childNodes.length > 1) {
+        container.removeChild(container.lastChild);
+      }
+      // append card
+      container.append(randomCharacterCard);
+    },
+  });
+
+  const container = createElement("div", {
+    className: "container",
+    childs: [randomButton],
+  });
+
+  return container;
+};
+
+// Show & Filter characters
+//
 export const CharactersFromAPIWithFilter = (
   args,
   { loaded: { characters } }

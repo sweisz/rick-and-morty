@@ -65,7 +65,7 @@ export async function getCharacter(id: number) {
       origin: {
         name: "Internet",
       },
-    };
+    } as Character;
   }
   const result = (await response.json()) as APICharacter;
   const character = convertToCharacter(result);
